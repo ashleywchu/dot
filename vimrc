@@ -2,19 +2,20 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
+call vundle#begin() Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ap/vim-css-color'
+Plugin 'hail2u/vim-css3-syntax'
 
 call vundle#end()
 filetype plugin indent on
@@ -29,7 +30,8 @@ filetype plugin indent on
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%F
+"set statusline+=%F
+set statusline+=%F\ %l\:%c
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -38,12 +40,17 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ruby_checkers = ['rubocop', 'rubylint']
 let g:syntastic_html_checkers = ['gjslint', 'tidy']
-let g:syntastic_javascript_checkers = ['jshint', 'JSXHint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:synstastic_typescript_checkers = ['eslint', 'tslint']
+
+let g:jsx_ext_required = 0
+let g:typescript_indent_disable = 1
 
 let g:solarized_termcolors=256
 
 autocmd vimenter * NERDTree
+"CTRL-n
+map <C-n> :NERDTreeToggle<CR>
 
 syntax enable
 set background=dark
