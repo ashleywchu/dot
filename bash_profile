@@ -1,6 +1,9 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+export PATH="$PATH:`yarn global bin`"
+
 # This function is called in your prompt to output your active git branch.
 function parse_git_branch() {
 git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -49,7 +52,8 @@ alias be="bundle exec"
 
 # Directory Nav
 alias up="cd .."
-alias dev="cd /Users/achu/Development"
+alias dev="cd /Users/ashleychu/Development"
+alias emp="cd /Users/ashleychu/Development/empatico"
 
 # Case-Insensitive Auto Completion
 bind "set completion-ignore-case on" || echo 'Something went wrong with bind in ~/.bash_profile.' 
@@ -60,5 +64,6 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-export NVM_DIR="/Users/achu/.nvm"
+export NVM_DIR="/Users/ashleychu/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# export PATH="$HOME/.rbenv/bin:$PATH"
